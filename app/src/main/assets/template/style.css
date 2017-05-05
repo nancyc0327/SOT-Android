@@ -1,0 +1,55 @@
+html, body{
+
+}
+
+body{
+background: #fff;
+font-family: sans-serif;
+margin: .5em;
+line-height: 24px;
+font-size: 18px;
+}
+
+a{
+color: #4444aa;
+text-decoration: underline;
+}
+
+a:visited{
+color: #555;
+}
+
+a:active, a:hover{
+color: #b53030;
+}
+
+h1, h2, h3, h4{
+color: #005393;
+font-weight: bold;
+}
+
+h1{
+font-size: 26px;
+}
+
+h2{
+font-size: 22px;
+}
+
+h3{
+font-size: 20px;
+}
+
+h4{
+font-size: 18px;
+}
+
+ul{
+list-style: disc;
+}
+
+.disclaimer{
+font-size: 90%;
+font-style: italic;
+}
+
