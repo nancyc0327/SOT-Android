@@ -17,8 +17,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="#EEFFDD"
+            android:onClick="list_sub_directory"
             android:text="Developmental&#10;Milestones by Age"
-            android:onClick="list_sub_directory"/>
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/button2"
@@ -26,8 +27,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="#FFDDCC"
+            android:onClick="go_to_search"
             android:text="Contact Us"
-            android:onClick="go_to_search"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 

@@ -1,6 +1,7 @@
 package com.example.mytestapplication;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,6 +23,14 @@ public class ContactInfo extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contact_info);
         //rest of the code
+        Intent intent = getIntent();
+
+        nameStr = intent.getStringExtra("name");
+        regionNumStr = intent.getStringExtra("region");
+        phoneStr = intent.getStringExtra("phone");
+        addressStr = intent.getStringExtra("address");
+        emailStr = intent.getStringExtra("email");
+
         TextView infoField = (TextView)findViewById(R.id.textView5);
         //infoField.setText("test\\ntest\\ntest\\ntesttesttesttesttest");
 

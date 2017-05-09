@@ -24,50 +24,6 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-/*    public void onClick(View v) {
-        Button mClickButton = (Button)findViewById(v.getId());
-        switch (v.getId()) {
-            case  R.id.button1: {
-                // do something for button 1 click
-                list_sub_directory(v);
-                break;
-            }
-
-            case R.id.button2: {
-                // do something for button 2 click
-
-                go_to_search(v);
-                break;
-            }
-            case R.id.button6: {
-                // do something for button 2 click
-
-                open_quality_child_care(v);
-                break;
-            }
-            case R.id.button8: {
-                // do something for button 2 click
-
-                open_resources(v);
-                break;
-            }
-            case R.id.button9: {
-                // do something for button 2 click
-
-                open_about(v);
-                break;
-            }
-            case R.id.button10: {
-                // do something for button 2 click
-
-                open_credits(v);
-                break;
-            }
-            //.... etc
-
-        }
-    }*/
-
     public void go_to_search(View v) {
         Intent intent = new Intent(this, ContactSearch.class);
         startActivity(intent);
@@ -81,7 +37,9 @@ public class MainActivity extends AppCompatActivity{
         mainDir = mainDir.replace('\n',' ');
         b.putString("main_dir",mainDir);
         b.putStringArrayList("sub_dir",mDirs.getSubDirName(mainDir));
+        b.putStringArrayList("file_name", mDirs.getFileNameList(mainDir));
         intent.putExtras(b);
+
         startActivity(intent);
     }
 
@@ -118,6 +76,7 @@ public class MainActivity extends AppCompatActivity{
         Bundle b = new Bundle();
         b.putString("show_page", url);
         intent.putExtras(b);
+        //intent.putExtra("directory_model", mDirs);
         startActivity(intent);
     }
 }

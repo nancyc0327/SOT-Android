@@ -3,9 +3,17 @@ package com.example.mytestapplication;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -26,7 +34,7 @@ import java.util.concurrent.ExecutionException;
  * Created by ncai2 on 5/2/17.
  */
 
-public class ContactSearch extends Activity implements View.OnClickListener {
+public class ContactSearch extends Activity{
 
     private String urlString = "http://edn.ne.gov/referralLookup.php?zip=";
 
@@ -38,13 +46,41 @@ public class ContactSearch extends Activity implements View.OnClickListener {
         setContentView(R.layout.contact_search);
         //rest of the code
         Button mClickButton1 = (Button)findViewById(R.id.button);
-        mClickButton1.setOnClickListener(this);
         EditText mInput = (EditText)findViewById(R.id.textView2);
+        TextView mInfo = (TextView)findViewById(R.id.textView6);
+
+        SpannableString ss = new SpannableString("If you are outside of Nebraska you can find your state's Part C Coordinator at ECTACenter");
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View textView) {
+                //startActivity(new Intent(ContactSearch.this, NextActivity.class));
+                goToUrl("http://www.nectac.org/contact/ptccoord.asp");
+            }
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setUnderlineText(false);
+            }
+        };
+        ss.setSpan(clickableSpan, 79, 89, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        mInfo.setText(ss);
+        mInfo.setMovementMethod(LinkMovementMethod.getInstance());
+        mInfo.setHighlightColor(Color.TRANSPARENT);
 
     }
+    public void clickEDU(View v)
+    {
+        goToUrl("https://www.education.ne.gov/");
+    }
 
+    private void goToUrl (String url) {
+        Uri uriUrl = Uri.parse(url);
+        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+        startActivity(launchBrowser);
+    }
     // Implement the OnClickListener callback
-    public void onClick(View v) {
+    public void clickSearch(View v) {
         // do something when the button is clicked
         EditText zipField = (EditText)findViewById(R.id.textView2);
         TextView errorField = (TextView)findViewById(R.id.textView3);
@@ -57,10 +93,10 @@ public class ContactSearch extends Activity implements View.OnClickListener {
         errorField.setText("");
 
 
-            GetJsonFromURLJob task = new GetJsonFromURLJob();
-            task.execute(urlString+zipField.getText());
+        GetJsonFromURLJob task = new GetJsonFromURLJob();
+        task.execute(urlString+zipField.getText());
 
-                String result = "";
+        String result = "";
         try {
             result = task.get().toString();
         } catch (InterruptedException e) {
@@ -72,15 +108,16 @@ public class ContactSearch extends Activity implements View.OnClickListener {
         JSONObject rJSON = null;
         try {
             rJSON = new JSONObject(result);
-            String regionNumber = (String) rJSON.get("regionNumber");
-            String name = (String) rJSON.get("name");
-            String address = (String) rJSON.get("address");
-            String cityStateZip = (String) rJSON.get("cityStateZip");
-            String phone = (String) rJSON.get("phone");
-            String email = (String) rJSON.get("email");
-            ContactModel contact = new ContactModel(regionNumber,name,phone,address+", "+cityStateZip,email);
+            String regionNumber = (String) rJSON.getString("regionNumber");
+            String name = (String) rJSON.getString("name");
+            String address = (String) rJSON.getString("address");
+            String cityStateZip = (String) rJSON.getString("cityStateZip");
+            String phone = (String) rJSON.getString("phone");
+            String email = (String) rJSON.getString("email");
+            show_info(v,regionNumber,name,address,cityStateZip,phone,email );
 
         } catch (JSONException e) {
+            errorField.setText("ZIP Not Found");
             e.printStackTrace();
         }
 
@@ -90,8 +127,14 @@ public class ContactSearch extends Activity implements View.OnClickListener {
 
     }
 
-    public void show_info(View v) {
+    public void show_info(View v, String region, String name, String address, String city, String phone, String email) {
         Intent intent = new Intent(this, ContactInfo.class);
+        intent.putExtra("region",region);
+        intent.putExtra("name",name);
+        intent.putExtra("address",address);
+        intent.putExtra("city",city);
+        intent.putExtra("phone",phone);
+        intent.putExtra("email",email);
         startActivity(intent);
     }
 
