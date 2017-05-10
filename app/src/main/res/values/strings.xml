@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My Test Application</string>
+    <string name="zip_not_found">ZIP Not Found.</string>
+    <string name="input_5_digit">Input 5 digit number for Zip code.</string>
 </resources>

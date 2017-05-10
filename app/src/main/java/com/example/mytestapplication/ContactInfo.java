@@ -3,7 +3,6 @@ package com.example.mytestapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -11,11 +10,6 @@ import android.widget.TextView;
  */
 
 public class ContactInfo extends Activity {
-  private String regionNumStr = "Region Number:";
-    private String nameStr = "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
-    private String phoneStr = "Phone Number: ";
-    private String addressStr = "Address:";
-    private String emailStr = "Email:";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,19 +19,19 @@ public class ContactInfo extends Activity {
         //rest of the code
         Intent intent = getIntent();
 
-        nameStr = intent.getStringExtra("name");
-        regionNumStr = intent.getStringExtra("region");
-        phoneStr = intent.getStringExtra("phone");
-        addressStr = intent.getStringExtra("address");
-        emailStr = intent.getStringExtra("email");
+        String nameStr = intent.getStringExtra("name");
+        String regionNumStr = intent.getStringExtra("region");
+        String phoneStr = intent.getStringExtra("phone");
+        String addressStr = intent.getStringExtra("address");
+        String emailStr = intent.getStringExtra("email");
 
         TextView infoField = (TextView)findViewById(R.id.textView5);
         //infoField.setText("test\\ntest\\ntest\\ntesttesttesttesttest");
 
         infoField.setText(regionNumStr + System.getProperty("line.separator")
-                +nameStr+ System.getProperty("line.separator")
-                +phoneStr+ System.getProperty("line.separator")
-                +addressStr+ System.getProperty("line.separator") +emailStr);
+                + nameStr + System.getProperty("line.separator")
+                + phoneStr + System.getProperty("line.separator")
+                + addressStr + System.getProperty("line.separator") + emailStr);
 
     }
 }

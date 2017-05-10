@@ -1,11 +1,5 @@
 package com.example.mytestapplication;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.util.Log;
-
-import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -26,9 +20,9 @@ class PageInfo {
     }
 }
 
-public class DirectoryModel{
-    PageInfo[] pages = new PageInfo[50];
-    int size = 0;
+class DirectoryModel{
+    private PageInfo[] pages = new PageInfo[50];
+    private int size = 0;
 
     private void addPage(String firstDir, String secondDir, String fileName)
     {
@@ -36,7 +30,7 @@ public class DirectoryModel{
         size++;
     }
 
-    public DirectoryModel()
+    DirectoryModel()
     {
         addPage("Developmental Milestones by Age","Read First","disclaimer.html");
         addPage("Developmental Milestones by Age","0-3 Months","0-3.html");
@@ -73,20 +67,9 @@ public class DirectoryModel{
 
     }
 
-    public ArrayList<PageInfo> getSubDir(String mainDirName)
+    ArrayList<String> getSubDirName(String mainDirName)
     {
-        ArrayList<PageInfo> list = new ArrayList<PageInfo>();
-        for(int i=0;i<size;i++)
-        {
-            if (mainDirName.equals(pages[i].mainDirName))
-                list.add(pages[i]);
-        }
-        return list;
-    }
-
-    public ArrayList<String> getSubDirName(String mainDirName)
-    {
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         for(int i=0;i<size;i++)
         {
             if (mainDirName.equals(pages[i].mainDirName))
@@ -95,26 +78,15 @@ public class DirectoryModel{
         return list;
     }
 
-    public ArrayList<String> getFileNameList(String mainDirName)
+    ArrayList<String> getFileNameList(String mainDirName)
     {
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         for(int i=0;i<size;i++)
         {
             if (mainDirName.equals(pages[i].mainDirName))
                 list.add(pages[i].pageFileName);
         }
         return list;
-    }
-
-    public String getFileName(String mainDirName, String subDirName)
-    {
-        ArrayList<String> list = new ArrayList<String>();
-        for(int i=0;i<size;i++)
-        {
-            if (mainDirName.equals(pages[i].mainDirName)&&subDirName.endsWith(pages[i].secondDirName))
-                return pages[i].pageFileName;
-        }
-        return null;
     }
 
 }

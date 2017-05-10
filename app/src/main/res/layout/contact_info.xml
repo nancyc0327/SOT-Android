@@ -10,10 +10,9 @@
         android:layout_alignParentRight="true"
         android:clickable="true"
         android:contextClickable="true"
-        android:inputType="textMultiLine"
         android:lines="10"
         android:scrollbars="horizontal"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:autoLink="phone|email"/>
 
 </RelativeLayout>

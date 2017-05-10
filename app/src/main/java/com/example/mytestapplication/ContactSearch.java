@@ -1,14 +1,11 @@
 package com.example.mytestapplication;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -16,11 +13,8 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,8 +30,6 @@ import java.util.concurrent.ExecutionException;
 
 public class ContactSearch extends Activity{
 
-    private String urlString = "http://edn.ne.gov/referralLookup.php?zip=";
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,8 +37,6 @@ public class ContactSearch extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contact_search);
         //rest of the code
-        Button mClickButton1 = (Button)findViewById(R.id.button);
-        EditText mInput = (EditText)findViewById(R.id.textView2);
         TextView mInfo = (TextView)findViewById(R.id.textView6);
 
         SpannableString ss = new SpannableString("If you are outside of Nebraska you can find your state's Part C Coordinator at ECTACenter");
@@ -86,7 +76,7 @@ public class ContactSearch extends Activity{
         TextView errorField = (TextView)findViewById(R.id.textView3);
         if (zipField.getText().length()<5){
 
-            errorField.setText("Input 5 digit number for Zip code.");
+            errorField.setText(R.string.input_5_digit);
             return;
         }
 
@@ -94,30 +84,29 @@ public class ContactSearch extends Activity{
 
 
         GetJsonFromURLJob task = new GetJsonFromURLJob();
-        task.execute(urlString+zipField.getText());
+        String urlString = "http://edn.ne.gov/referralLookup.php?zip=";
+        task.execute(urlString +zipField.getText());
 
         String result = "";
         try {
-            result = task.get().toString();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+            result = task.get();
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
 
-        JSONObject rJSON = null;
+        JSONObject rJSON;
         try {
             rJSON = new JSONObject(result);
-            String regionNumber = (String) rJSON.getString("regionNumber");
-            String name = (String) rJSON.getString("name");
-            String address = (String) rJSON.getString("address");
-            String cityStateZip = (String) rJSON.getString("cityStateZip");
-            String phone = (String) rJSON.getString("phone");
-            String email = (String) rJSON.getString("email");
-            show_info(v,regionNumber,name,address,cityStateZip,phone,email );
+            String regionNumber = rJSON.getString("regionNumber");
+            String name = rJSON.getString("name");
+            String address = rJSON.getString("address");
+            String cityStateZip = rJSON.getString("cityStateZip");
+            String phone = rJSON.getString("phone");
+            String email = rJSON.getString("email");
+            show_info(regionNumber,name,address,cityStateZip,phone,email );
 
         } catch (JSONException e) {
-            errorField.setText("ZIP Not Found");
+            errorField.setText(R.string.zip_not_found);
             e.printStackTrace();
         }
 
@@ -127,7 +116,7 @@ public class ContactSearch extends Activity{
 
     }
 
-    public void show_info(View v, String region, String name, String address, String city, String phone, String email) {
+    public void show_info(String region, String name, String address, String city, String phone, String email) {
         Intent intent = new Intent(this, ContactInfo.class);
         intent.putExtra("region",region);
         intent.putExtra("name",name);
