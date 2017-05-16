@@ -74,7 +74,7 @@ public class ContactSearch extends Activity{
         // do something when the button is clicked
         EditText zipField = (EditText)findViewById(R.id.textView2);
         TextView errorField = (TextView)findViewById(R.id.textView3);
-        if (zipField.getText().length()<5){
+        if (zipField.getText().length()!= 5){
 
             errorField.setText(R.string.input_5_digit);
             return;

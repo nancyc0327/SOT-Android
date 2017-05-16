@@ -9,7 +9,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="Please enter your ZIP Code"
+        android:text="Please enter your ZIP code"
         android:textSize="20sp" />
 
     <EditText
@@ -20,7 +20,8 @@
         android:layout_alignBottom="@+id/button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:inputType="number" />
+        android:inputType="number"
+        android:maxLength="5"/>
 
     <Button
         android:id="@+id/button"
@@ -51,8 +52,7 @@
         android:layout_below="@+id/textView6"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="clickEDU"
-        android:contentDescription="Go to www.education.ne.gov" />
+        android:onClick="clickEDU"/>
 
     <TextView
         android:id="@+id/textView6"
