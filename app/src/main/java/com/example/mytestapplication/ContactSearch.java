@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -13,6 +15,7 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import org.json.JSONException;
@@ -28,7 +31,7 @@ import java.util.concurrent.ExecutionException;
  * Created by ncai2 on 5/2/17.
  */
 
-public class ContactSearch extends Activity{
+public class ContactSearch extends AppCompatActivity {
 
 
     @Override
@@ -38,6 +41,8 @@ public class ContactSearch extends Activity{
         setContentView(R.layout.contact_search);
         //rest of the code
         TextView mInfo = (TextView)findViewById(R.id.textView6);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 
         SpannableString ss = new SpannableString("If you are outside of Nebraska you can find your state's Part C Coordinator at ECTACenter");
         ClickableSpan clickableSpan = new ClickableSpan() {

@@ -11,23 +11,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:label="Staying On Track">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ContactSearch">
+        <activity android:label="Search Contact"
+            android:name=".ContactSearch">
 
         </activity>
-        <activity android:name=".ContactInfo">
+        <activity android:label="Contact Detail"
+            android:name=".ContactInfo">
 
         </activity>
         <activity android:name=".WebPage">
 
         </activity>
-        <activity android:name=".DirectoryPage">
+        <activity android:label="Directory"
+            android:name=".DirectoryPage">
 
        </activity>
     </application>

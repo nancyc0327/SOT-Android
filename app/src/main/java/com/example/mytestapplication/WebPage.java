@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.webkit.URLUtil;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
@@ -14,27 +15,18 @@ import android.webkit.WebViewClient;
  * Created by ncai2 on 5/4/17.
  */
 
-public class WebPage extends Activity {
+public class WebPage extends AppCompatActivity {
 
-    @Override
-    /*public void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.webpage);
-        //rest of the code
-        WebView webView = (WebView)findViewById(R.id.webview1);
-        Bundle b = getIntent().getExtras();
-        String url = b.getString("show_page");
-        webView.loadUrl(url);
-        //webView.loadUrl("file:///android_asset/about.html");
-    }*/
+    WebView wv;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.webpage);
-        final WebView wv = (WebView) findViewById(R.id.webview1);
+        wv = (WebView) findViewById(R.id.webview1);
         Bundle b = getIntent().getExtras();
         String url = b.getString("show_page");
+        String dir = b.getString("sub_dir");
+        this.setTitle(dir);
         wv.loadUrl(url);
         wv.setWebViewClient(new WebViewClient(){
             @Override
@@ -105,5 +97,14 @@ public class WebPage extends Activity {
     public void go_to_search() {
         Intent intent = new Intent(this, ContactSearch.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        if(wv.canGoBack())
+            wv.goBack();
+        else
+            super.onBackPressed();
     }
 }

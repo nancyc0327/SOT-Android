@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,7 +15,7 @@ import android.widget.TextView;
  * Created by ncai2 on 5/2/17.
  */
 
-public class ContactInfo extends Activity {
+public class ContactInfo extends AppCompatActivity {
     String phoneStr;
     String emailStr;
 
