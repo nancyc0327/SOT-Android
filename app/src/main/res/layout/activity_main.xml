@@ -16,6 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="#EEFFDD"
             android:backgroundTint="#EEFFDD"
             android:onClick="list_sub_directory"
             android:text="Developmental&#10;Milestones by Age"
@@ -26,6 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="#FFDDCC"
             android:backgroundTint="#FFDDCC"
             android:onClick="go_to_search"
             android:text="Contact Us"
@@ -43,20 +45,22 @@
         <Button
             android:id="@+id/button3"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#8FC3EA"
             android:backgroundTint="#8FC3EA"
-            android:text="Support Growth&#10;and Learning"
-            android:onClick="list_sub_directory"/>
+            android:onClick="list_sub_directory"
+            android:text="Support Growth&#10;and Learning" />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFDE75"
             android:backgroundTint="#FFDE75"
-            android:text="Keep Your&#10;Child Healthy"
-            android:onClick="list_sub_directory"/>
+            android:onClick="list_sub_directory"
+            android:text="Keep Your&#10;Child Healthy" />
 
     </LinearLayout>
     <LinearLayout
@@ -68,20 +72,22 @@
         <Button
             android:id="@+id/button5"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#EDD4B2"
             android:backgroundTint="#EDD4B2"
-            android:text="Keep Your&#10;Child Safe"
-            android:onClick="list_sub_directory"/>
+            android:onClick="list_sub_directory"
+            android:text="Keep Your&#10;Child Safe" />
 
         <Button
             android:id="@+id/button6"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F6A2B6"
             android:backgroundTint="#F6A2B6"
-            android:text="Choosing Quality&#10;Child Care"
-            android:onClick="open_quality_child_care"/>
+            android:onClick="open_quality_child_care"
+            android:text="Choosing Quality&#10;Child Care" />
 
     </LinearLayout>
     <LinearLayout
@@ -93,20 +99,22 @@
         <Button
             android:id="@+id/button7"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#35BDB2"
             android:backgroundTint="#35BDB2"
-            android:text="Kindergarten"
-            android:onClick="list_sub_directory"/>
+            android:onClick="list_sub_directory"
+            android:text="Kindergarten" />
 
         <Button
             android:id="@+id/button8"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#D2CAE4"
             android:backgroundTint="#D2CAE4"
-            android:text="More Resources"
-            android:onClick="open_resources"/>
+            android:onClick="open_resources"
+            android:text="More Resources" />
 
     </LinearLayout>
     <LinearLayout
@@ -118,20 +126,22 @@
         <Button
             android:id="@+id/button9"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FDCDA7"
             android:backgroundTint="#FDCDA7"
-            android:text="About EDN"
-            android:onClick="open_about"/>
+            android:onClick="open_about"
+            android:text="About EDN" />
 
         <Button
             android:id="@+id/button10"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#E3E0CB"
             android:backgroundTint="#E3E0CB"
-            android:text="Credits"
-            android:onClick="open_credits"/>
+            android:onClick="open_credits"
+            android:text="Credits" />
 
     </LinearLayout>
 </LinearLayout>
