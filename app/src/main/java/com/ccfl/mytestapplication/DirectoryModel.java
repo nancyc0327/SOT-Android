@@ -1,4 +1,4 @@
-package com.example.mytestapplication;
+package com.ccfl.mytestapplication;
 
 import java.util.ArrayList;
 

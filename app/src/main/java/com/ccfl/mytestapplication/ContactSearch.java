@@ -1,23 +1,24 @@
-package com.example.mytestapplication;
+package com.ccfl.mytestapplication;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.util.Log;
+//import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.mytestapplication.R;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -66,7 +67,7 @@ public class ContactSearch extends AppCompatActivity {
     }
     public void clickEDU(View v)
     {
-        goToUrl("https://www.education.ne.gov/");
+        goToUrl("http://edn.ne.gov/cms/");
     }
 
     private void goToUrl (String url) {
@@ -100,6 +101,12 @@ public class ContactSearch extends AppCompatActivity {
         }
 
         JSONObject rJSON;
+
+        if (result.equals(""))
+        {
+            errorField.setText("Check network connection.");
+            return;
+        }
         try {
             rJSON = new JSONObject(result);
             String regionNumber = rJSON.getString("regionNumber");
@@ -116,7 +123,7 @@ public class ContactSearch extends AppCompatActivity {
         }
 
 
-        Log.d("result:", result);
+        //Log.d("result:", result);
 
 
     }

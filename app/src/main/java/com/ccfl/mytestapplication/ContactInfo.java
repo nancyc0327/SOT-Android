@@ -1,4 +1,4 @@
-package com.example.mytestapplication;
+package com.ccfl.mytestapplication;
 
 import android.Manifest;
 import android.app.Activity;
@@ -10,6 +10,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.mytestapplication.R;
 
 /**
  * Created by ncai2 on 5/2/17.

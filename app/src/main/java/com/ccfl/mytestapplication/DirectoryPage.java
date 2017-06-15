@@ -1,14 +1,15 @@
-package com.example.mytestapplication;
+package com.ccfl.mytestapplication;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+//import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.mytestapplication.R;
 
 import java.util.ArrayList;
 
@@ -42,14 +43,14 @@ public class DirectoryPage extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String fileName = fileNames.get(position);
                 String subDir = subdirs.get(position);
-                Log.d("clicked:", String.valueOf(position));
+                //Log.d("clicked:", String.valueOf(position));
 
 
                 String url = "file:///android_asset/"+fileName;
                 Intent intent = new Intent(DirectoryPage.this, WebPage.class);
                 Bundle b = new Bundle();
                 b.putString("show_page", url);
-                b.putString("sub_dir",subDir);
+                b.putString("title",subDir);
                 intent.putExtras(b);
                 startActivity(intent);
             }

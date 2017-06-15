@@ -1,4 +1,4 @@
-package com.example.mytestapplication;
+package com.ccfl.mytestapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.view.View;
 import android.content.Intent;
 
+import com.example.mytestapplication.R;
 
 
 public class MainActivity extends AppCompatActivity{
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity{
         Intent intent = new Intent(this, WebPage.class);
         Bundle b = new Bundle();
         b.putString("show_page", url);
+        b.putString("title","Choosing Quality Child Care");
         intent.putExtras(b);
         startActivity(intent);
     }
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity{
         Intent intent = new Intent(this, WebPage.class);
         Bundle b = new Bundle();
         b.putString("show_page", url);
+        b.putString("title","About EDN");
         intent.putExtras(b);
         startActivity(intent);
     }
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity{
         Intent intent = new Intent(this, WebPage.class);
         Bundle b = new Bundle();
         b.putString("show_page", url);
+        b.putString("title","More Resources");
         intent.putExtras(b);
         startActivity(intent);
     }
@@ -75,6 +79,7 @@ public class MainActivity extends AppCompatActivity{
         Intent intent = new Intent(this, WebPage.class);
         Bundle b = new Bundle();
         b.putString("show_page", url);
+        b.putString("title","Credits");
         intent.putExtras(b);
         //intent.putExtra("directory_model", mDirs);
         startActivity(intent);

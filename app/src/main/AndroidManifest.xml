@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mytestapplication">
+    package="com.example.mytestapplication"
+    android:versionCode="1"
+    android:versionName="1.0">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity android:name="com.ccfl.mytestapplication.MainActivity"
             android:label="Staying On Track">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,18 +22,18 @@
             </intent-filter>
         </activity>
         <activity android:label="Search Contact"
-            android:name=".ContactSearch">
+            android:name="com.ccfl.mytestapplication.ContactSearch">
 
         </activity>
         <activity android:label="Contact Detail"
-            android:name=".ContactInfo">
+            android:name="com.ccfl.mytestapplication.ContactInfo">
 
         </activity>
-        <activity android:name=".WebPage">
+        <activity android:name="com.ccfl.mytestapplication.WebPage">
 
         </activity>
         <activity android:label="Directory"
-            android:name=".DirectoryPage">
+            android:name="com.ccfl.mytestapplication.DirectoryPage">
 
        </activity>
     </application>
